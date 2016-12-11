@@ -229,6 +229,23 @@
 					"fonts/mui.ttf",
 					"css/mui.min.css"
 				],
+				"refer": [
+					"Pages/linear/HoleAxisLength.html"
+				],
+				"priority": 0
+			},
+			"Pages/linear/HoleAxisLength.html": {
+				"resources": [
+					"js/mui.min.js",
+					"css/mui.min.css",
+					"fonts/mui.ttf",
+					"imgs/HoleAxisLength.png",
+					"css/imageViewer.css",
+					"js/mui.zoom.js",
+					"js/mui.previewimage.js",
+					"imgs/HoleAxisLength.gif",
+					"data/HoleAxisLengthData.js"
+				],
 				"refer": [],
 				"priority": 0
 			}

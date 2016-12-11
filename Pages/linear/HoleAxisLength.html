@@ -1,0 +1,87 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../../css/mui.min.css" rel="stylesheet" />
+		<!--<link rel="stylesheet" type="text/css" href="../../css/imageViewer.css"/>-->
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+		    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+		    <h1 class="mui-title">孔D、轴d及长度L</h1>
+		</header>
+		<div class="mui-content">
+		    <img src="../../imgs/HoleAxisLength.gif" width="100%" data-preview-src=""/> 
+		    <ul class="mui-table-view mui-unfold">
+		        <li class="mui-table-view-cell mui-collapse mui-active" >
+		            <a class="mui-navigate-right" href="#">选择公差类型（孔、轴、长度）</a>
+		            <div class="mui-collapse-content" id="ToleranceTypePanel">
+		                <ul class="mui-table-view mui-table-view-radio">
+	                        <li class="mui-table-view-cell mui-selected">
+	                        	<a class="mui-navigate-right">孔D</a>
+	                        </li>
+	                        <li class="mui-table-view-cell">
+	                        	<a class="mui-navigate-right">轴d</a>
+	                        </li>
+	                        <li class="mui-table-view-cell">
+	                        	<a class="mui-navigate-right">长度L</a>
+	                        </li>
+	                    </ul>
+		            </div>
+		        </li>
+		        
+		        <li class="mui-table-view-cell mui-collapse mui-active" id="ToleranceLevelPanel">
+		            <a class="mui-navigate-right" href="#">选择公差等级（I、II）</a>
+		                <div class="mui-collapse-content">
+		                	<ul class="mui-table-view mui-table-view-radio">
+	                	        <li class="mui-table-view-cell mui-selected">
+	                	            <a class="mui-navigate-right">I</a>
+	                	        </li>
+	                	        <li class="mui-table-view-cell">
+	                	            	<a class="mui-navigate-right">II</a>
+	                	        </li>
+	                	    </ul>
+		            	</div>
+		        </li>
+		        <li class="mui-table-view-cell mui-collapse mui-active">
+		            <a class="mui-navigate-right" href="#">输入基本尺寸</a>
+		            <div class="mui-collapse-content">
+		                <form class="mui-input-group">
+		                    <div class="mui-input-row">
+		                        <label>基本尺寸</label>
+		                        <input type="text" class="mui-input-clear" placeholder="基本尺寸">
+		                        
+		                    </div>
+		                </form>
+		            </div>
+		        </li>
+		    </ul>
+		</div>
+		<script src="../../js/mui.min.js"></script>
+		<script src="../../data/HoleAxisLengthData.js" type="text/javascript" charset="utf-8"></script>
+		<!--<script src="../../js/mui.zoom.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../js/mui.previewimage.js" type="text/javascript" charset="utf-8"></script>-->
+		<script type="text/javascript">
+			mui.init();
+//			mui.previewImage();
+			mui.plusReady(function () {
+				console.log(HoleAxisLengthData);
+				// 为公差类型面板中长度L的单选按钮添加事件
+				var list = document.querySelector('.mui-table-view .mui-table-view-radio')
+				list.addEventListener('selected',function(e){
+					if (e.detail.el.innerText.trim() == "长度L") {
+						document.getElementById('ToleranceLevelPanel').style.display = 'none';
+					}else{
+						document.getElementById('ToleranceLevelPanel').style.display = 'block';
+					}
+				});
+								
+			})
+		
+		</script>
+	</body>
+
+</html>

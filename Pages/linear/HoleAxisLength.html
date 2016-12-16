@@ -52,12 +52,11 @@
 		                <form class="mui-input-group">
 		                    <div class="mui-input-row">
 		                        <label>基本尺寸</label>
-		                        <input type="text" class="mui-input-clear" placeholder="基本尺寸" id="txtBasicSize">
+		                        <input type="text" class="mui-input-clear" placeholder="基本尺寸" id="txtBasicSize" required="required">
 		                        
 		                    </div>
 		                    <div class="mui-button-row">
-						        <button type="button" class="mui-btn mui-btn-primary" id="btnConfirm">确认</button>
-						        <button type="button" class="mui-btn mui-btn-danger" id="btnCancel">取消</button>
+						        <button type="button" class="mui-btn mui-btn-primary" id="btnConfirm" style="width:40%;">查  询</button>
 						    </div>
 		                </form>
 		            </div>
@@ -104,65 +103,73 @@
 				})
 				var btnConfirm = document.getElementById('btnConfirm');
 				btnConfirm.addEventListener('tap',function (e) {
-					var basicSize = document.getElementById('txtBasicSize').value;
-					var holeaxislength = new HoleAxisLength(basicSize);
-					console.log(ToleranceType);
-					console.log(ToleranceLevel);
-					var result = null;
-					var resultStr = "";
-					switch (ToleranceType){
-						case 'D':
-							switch (ToleranceLevel){
-								case 'I':
-									result = holeaxislength.getLevelIHole();
-									resultStr = "基本尺寸："+holeaxislength.basicSize+"\n";
-									resultStr += "公差类型：孔D\n公差等级：I\n";
-									resultStr += "上公差："+result.upper+"\n"+"下公差："+result.lower;
-									break;
-								case 'II':
-									result = holeaxislength.getLevelIIHole();
-									resultStr = "基本尺寸："+holeaxislength.basicSize+"\n";
-									resultStr += "公差类型：孔D\n公差等级：II\n";
-									resultStr += "上公差："+result.upper+"\n"+"下公差："+result.lower;
-									break;
-							}
-							break;
-						case 'd':
-							switch (ToleranceLevel){
-								case 'I':
-									result = holeaxislength.getLevelIAxis();
-									resultStr = "基本尺寸："+holeaxislength.basicSize+"\n";
-									resultStr += "公差类型：轴d\n公差等级：I\n";
-									resultStr += "上公差："+result.upper+"\n"+"下公差："+result.lower;
-									break;
-								case 'II':
-									result = holeaxislength.getLevelIIAxis();
-									resultStr = "基本尺寸："+holeaxislength.basicSize+"\n";
-									resultStr += "公差类型：轴d\n公差等级：II\n";
-									resultStr += "上公差："+result.upper+"\n"+"下公差："+result.lower;
-									break;
-							}
-							break;
-						case 'L':
-							result = holeaxislength.getLength();
-							resultStr = "基本尺寸："+holeaxislength.basicSize+"\n";
-							resultStr += "公差类型：长度L\n";
-							resultStr += "长度公差：±"+result;
-							break;
+					var basicSize = document.getElementById('txtBasicSize').value.trim();
+					try{
+						if (basicSize == "") {
+							return
+						}
+						var holeaxislength = new HoleAxisLength(basicSize);
+						console.log(ToleranceType);
+						console.log(ToleranceLevel);
+						var result = null;
+						var resultStr = "";
+						switch (ToleranceType){
+							case 'D':
+								switch (ToleranceLevel){
+									case 'I':
+										result = holeaxislength.getLevelIHole();
+										resultStr = "基本尺寸："+holeaxislength.basicSize+"\n";
+										resultStr += "公差类型：孔D\n公差等级：I\n";
+										resultStr += "上公差："+result.upper+"\n"+"下公差："+result.lower;
+										break;
+									case 'II':
+										result = holeaxislength.getLevelIIHole();
+										resultStr = "基本尺寸："+holeaxislength.basicSize+"\n";
+										resultStr += "公差类型：孔D\n公差等级：II\n";
+										resultStr += "上公差："+result.upper+"\n"+"下公差："+result.lower;
+										break;
+								}
+								break;
+							case 'd':
+								switch (ToleranceLevel){
+									case 'I':
+										result = holeaxislength.getLevelIAxis();
+										resultStr = "基本尺寸："+holeaxislength.basicSize+"\n";
+										resultStr += "公差类型：轴d\n公差等级：I\n";
+										resultStr += "上公差："+result.upper+"\n"+"下公差："+result.lower;
+										break;
+									case 'II':
+										result = holeaxislength.getLevelIIAxis();
+										resultStr = "基本尺寸："+holeaxislength.basicSize+"\n";
+										resultStr += "公差类型：轴d\n公差等级：II\n";
+										resultStr += "上公差："+result.upper+"\n"+"下公差："+result.lower;
+										break;
+								}
+								break;
+							case 'L':
+								result = holeaxislength.getLength();
+								resultStr = "基本尺寸："+holeaxislength.basicSize+"\n";
+								resultStr += "公差类型：长度L\n";
+								resultStr += "长度公差：±"+result;
+								break;
+						}
+	//					console.log("基本尺寸");
+	//					console.log(holeaxislength.basicSize);
+	//					console.log("孔I");
+	//					console.log(holeaxislength.getLevelIHole());
+	//					console.log("轴I");
+	//					console.log(holeaxislength.getLevelIAxis());
+	//					console.log("孔II");
+	//					console.log(holeaxislength.getLevelIIHole());
+	//					console.log("轴II");
+	//					console.log(holeaxislength.getLevelIIAxis());
+	//					console.log("长度L");
+	//					console.log(holeaxislength.getLength());
+						alert(resultStr,"查询结果");
+					}catch(e){
+						//TODO handle the exception
+						alert(e.message)
 					}
-//					console.log("基本尺寸");
-//					console.log(holeaxislength.basicSize);
-//					console.log("孔I");
-//					console.log(holeaxislength.getLevelIHole());
-//					console.log("轴I");
-//					console.log(holeaxislength.getLevelIAxis());
-//					console.log("孔II");
-//					console.log(holeaxislength.getLevelIIHole());
-//					console.log("轴II");
-//					console.log(holeaxislength.getLevelIIAxis());
-//					console.log("长度L");
-//					console.log(holeaxislength.getLength());
-					alert(resultStr,"查询结果");
 				})
 			})
 		

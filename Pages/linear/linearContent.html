@@ -16,8 +16,7 @@
 				
 			
 			<button type="button" class="mui-btn mui-btn-blue mui-btn-block mui-btn-outlined" id="btnHoleAxisLength">孔D、轴d及长度L</button>
-			<button type="button" class="mui-btn mui-btn-blue mui-btn-block mui-btn-outlined">钻孔深度L<sub>1</sub></button>
-			<button type="button" class="mui-btn mui-btn-blue mui-btn-block mui-btn-outlined">螺纹长度L<sub>2</sub></button>
+			<button type="button" class="mui-btn mui-btn-blue mui-btn-block mui-btn-outlined" id="btnHoleAndScrewDepth">钻孔深度L<sub>1</sub>及螺纹长度L<sub>2</sub></button>
 			<button type="button" class="mui-btn mui-btn-blue mui-btn-block mui-btn-outlined">转接半径r和倒角L<sub>3</sub>及其角度45°</button>
 			<button type="button" class="mui-btn mui-btn-blue mui-btn-block mui-btn-outlined">非转接半径R</button>
 			</div>
@@ -59,10 +58,16 @@
 		<script type="text/javascript">
 			mui.init();
 			mui.plusReady(function () {
-				document.getElementById('btnHoleAxisLength').addEventListener('tap',function (e) {
+				document.getElementById('btnHoleAxisLength').addEventListener('tap',function(e) {
 					mui.openWindow({
 						url:'HoleAxisLength.html',
 						id :'HoleAxisLength.html'
+					})
+				});
+				document.getElementById('btnHoleAndScrewDepth').addEventListener('tap',function(e) {
+					mui.openWindow({
+						url:'HoleAndScrewDepth.html',
+						id :'HoleAndScrewDepth.html'
 					})
 				})
 			})

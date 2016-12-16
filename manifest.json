@@ -230,7 +230,8 @@
 					"css/mui.min.css"
 				],
 				"refer": [
-					"Pages/linear/HoleAxisLength.html"
+					"Pages/linear/HoleAxisLength.html",
+					"Pages/linear/HoleAndScrewDepth.html"
 				],
 				"priority": 0
 			},
@@ -246,6 +247,16 @@
 					"imgs/HoleAxisLength.gif",
 					"data/HoleAxisLengthData.js",
 					"js/Common.js"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"Pages/linear/HoleAndScrewDepth.html": {
+				"resources": [
+					"js/mui.min.js",
+					"fonts/mui.ttf",
+					"css/mui.min.css",
+					"imgs/HoleAndScrewDepth.gif"
 				],
 				"refer": [],
 				"priority": 0

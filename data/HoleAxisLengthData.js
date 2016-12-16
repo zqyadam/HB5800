@@ -430,10 +430,151 @@ var HoleAxisLengthData = [{
 		}
 	},
 	"L":1
-}]
-
-
-
+},{
+	"dimension": [800,1000],
+	"condition":[">","="],
+	"D":{
+		"I":{
+			"upper":0.9,
+			"lower":0
+		},
+		"II":{
+			"upper":1.4,
+			"lower":0
+		}
+	},
+	"d":{
+		"I":{
+			"upper":0,
+			"lower":-0.9
+		},
+		"II":{
+			"upper":0,
+			"lower":-1.4
+		}
+	},
+	"L":1.15
+},{
+	"dimension": [1000,1250],
+	"condition":[">","="],
+	"D":{
+		"I":{
+			"upper":1.05,
+			"lower":0
+		},
+		"II":{
+			"upper":1.65,
+			"lower":0
+		}
+	},
+	"d":{
+		"I":{
+			"upper":0,
+			"lower":-1.05
+		},
+		"II":{
+			"upper":0,
+			"lower":-1.65
+		}
+	},
+	"L":1.3
+},{
+	"dimension": [1250,1600],
+	"condition":[">","="],
+	"D":{
+		"I":{
+			"upper":1.25,
+			"lower":0
+		},
+		"II":{
+			"upper":1.95,
+			"lower":0
+		}
+	},
+	"d":{
+		"I":{
+			"upper":0,
+			"lower":-1.25
+		},
+		"II":{
+			"upper":0,
+			"lower":-1.95
+		}
+	},
+	"L":1.55
+},{
+	"dimension": [1600,2000],
+	"condition":[">","="],
+	"D":{
+		"I":{
+			"upper":1.5,
+			"lower":0
+		},
+		"II":{
+			"upper":2.3,
+			"lower":0
+		}
+	},
+	"d":{
+		"I":{
+			"upper":0,
+			"lower":-1.5
+		},
+		"II":{
+			"upper":0,
+			"lower":-2.3
+		}
+	},
+	"L":1.85
+},{
+	"dimension": [2000,2500],
+	"condition":[">","="],
+	"D":{
+		"I":{
+			"upper":1.75,
+			"lower":0
+		},
+		"II":{
+			"upper":2.8,
+			"lower":0
+		}
+	},
+	"d":{
+		"I":{
+			"upper":0,
+			"lower":-1.75
+		},
+		"II":{
+			"upper":0,
+			"lower":-2.8
+		}
+	},
+	"L":2.2
+},{
+	"dimension": [2500,3150],
+	"condition":[">","="],
+	"D":{
+		"I":{
+			"upper":2.1,
+			"lower":0
+		},
+		"II":{
+			"upper":3.3,
+			"lower":0
+		}
+	},
+	"d":{
+		"I":{
+			"upper":0,
+			"lower":-2.1
+		},
+		"II":{
+			"upper":0,
+			"lower":-3.3
+		}
+	},
+	"L":2.7
+}];
 
 
 
@@ -443,49 +584,49 @@ var HoleAxisLengthData = [{
 	var basicSize;
 	
 	function HoleAxisLength(bs){
+//		console.log(HoleAxisLengthData);
+		let minSize = HoleAxisLengthData[0].dimension[0];
+		let maxSize = HoleAxisLengthData[HoleAxisLengthData.length-1].dimension[1];
+		if (bs<minSize || bs > maxSize) {
+			throw new Error("超出范围！"); 
+		}
 		this.basicSize = bs;
-		
+		this.index = this._getIndex();
 	}
 	
-	function getIndex(){
+	HoleAxisLength.prototype._getIndex = function(){
+		if (Math.abs(this.basicSize - 0.1)<0.000001) {
+			return 0;
+		}
+		if (Math.abs(this.basicSize - 1)<0.000001) {
+			return 3;
+		}
 		for (let i = 0 ; i< HoleAxisLengthData.length; i++) {
 			var temp = HoleAxisLengthData[i];
-			// min size
-			
-			
-			if (basicSize < temp['dimension'][1]) {
-				
-			}
-			switch (temp['condition']){
-				case value:
-					break;
-				default:
-					break;
-			}
-			var state = this.basicSize + temp['condition'] + temp[] 
-			if (eval( >temp['dimension']) {
-				
+			if (this.basicSize > temp.dimension[0] && this.basicSize <= temp.dimension[1]) {
+				return i;
 			}
 		}
 	}
-	
-	function getLevelIHole () {
-		
+	HoleAxisLength.prototype.getLevelIHole = function() {
+		return HoleAxisLengthData[this.index].D.I;
 	}
 	
-	function getLevelIAxis () {
-		
+	HoleAxisLength.prototype.getLevelIAxis = function() {
+		return HoleAxisLengthData[this.index].d.I;
 	}
 	
-	function getLevelIIHole () {
-		
+	HoleAxisLength.prototype.getLevelIIHole = function() {
+		return HoleAxisLengthData[this.index].D.II;
 	}
 	
-	function getLevelIIAxis () {
-		
+	HoleAxisLength.prototype.getLevelIIAxis = function() {
+		return HoleAxisLengthData[this.index].d.II;
 	}
 	
-	function getLength () {
-		
+	HoleAxisLength.prototype.getLength = function() {
+		return HoleAxisLengthData[this.index].L;
 	}
+	
+	window.HoleAxisLength = HoleAxisLength;
 }(window))

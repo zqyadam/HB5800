@@ -48,7 +48,8 @@
 			"js/mui.zoom.js",
 			"js/mui.previewimage.js",
 			"imgs/HoleAxisLength.gif",
-			"data/HoleAxisLengthData.js"
+			"data/HoleAxisLengthData.js",
+			"js/Common.js"
 		]
 	}
 }

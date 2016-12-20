@@ -1,57 +1,7 @@
-(function (window) {
-	// 定义获取行索引
-	var basicSize;
-	
-	function HoleAxisLength(bs) {
-		console.log(this.HoleAxisLengthData);
-		let minSize = this.HoleAxisLengthData[0].dimension[0];
-		let maxSize = this.HoleAxisLengthData[this.HoleAxisLengthData.length-1].dimension[1];
-		if (bs<minSize || bs > maxSize) {
-			throw new Error("超出查询范围！"); 
-		}
-		this.basicSize = bs;
-		this.index = this._getIndex();
-	}
-	 
-	
-	HoleAxisLength.prototype._getIndex = function(){
-		if (Math.abs(this.basicSize - 0.1)<0.000001) {
-			return 0;
-		}
-		if (Math.abs(this.basicSize - 1)<0.000001) {
-			return 3;
-		}
-		for (let i = 0 ; i< this.HoleAxisLengthData.length; i++) {
-			var temp = this.HoleAxisLengthData[i];
-			if (this.basicSize > temp.dimension[0] && this.basicSize <= temp.dimension[1]) {
-				return i;
-			} 
-		}
-	}
-	HoleAxisLength.prototype.getLevelIHole = function() {
-		return this.HoleAxisLengthData[this.index].D.I;
-	}
-	
-	HoleAxisLength.prototype.getLevelIAxis = function() {
-		return this.HoleAxisLengthData[this.index].d.I;
-	}
-	
-	HoleAxisLength.prototype.getLevelIIHole = function() {
-		return this.HoleAxisLengthData[this.index].D.II;
-	}
-	
-	HoleAxisLength.prototype.getLevelIIAxis = function() {
-		return this.HoleAxisLengthData[this.index].d.II;
-	}
-	
-	HoleAxisLength.prototype.getLength = function() {
-		return this.HoleAxisLengthData[this.index].L;
-	}
-	
-	window.HoleAxisLength = HoleAxisLength;
-	
+// 定义获取行索引
+function HoleAxisLength(bs) {
 	// 基本尺寸表格
-	HoleAxisLength.prototype.HoleAxisLengthData = [{
+	this.HoleAxisLengthData = [{
 		"dimension": [0.1,0.3],
 		"condition":["=","="],
 		"D":{
@@ -628,4 +578,47 @@
 		},
 		"L":2.7
 	}];
-}(window))
+	
+	var minSize = this.HoleAxisLengthData[0]['dimension'][0];
+	var maxSize = this.HoleAxisLengthData[this.HoleAxisLengthData.length-1].dimension[1];
+	if (bs<minSize || bs > maxSize) {
+		throw new Error("超出查询范围！"); 
+	}
+	this.basicSize = bs;
+	this.index = this._getIndex();
+}
+ 
+
+HoleAxisLength.prototype._getIndex = function(){
+	if (Math.abs(this.basicSize - 0.1)<0.000001) {
+		return 0;
+	}
+	if (Math.abs(this.basicSize - 1)<0.000001) {
+		return 3;
+	}  
+	for(var i = 0 ; i< this.HoleAxisLengthData.length; i++) {
+		var temp = this.HoleAxisLengthData[i]; 
+		if (this.basicSize > temp.dimension[0] && this.basicSize <= temp.dimension[1]) {
+			return i;
+		} 
+	}
+}
+HoleAxisLength.prototype.getLevelIHole = function() {
+	return this.HoleAxisLengthData[this.index].D.I;
+}
+
+HoleAxisLength.prototype.getLevelIAxis = function() {
+	return this.HoleAxisLengthData[this.index].d.I;
+}
+
+HoleAxisLength.prototype.getLevelIIHole = function() {
+	return this.HoleAxisLengthData[this.index].D.II;
+}
+
+HoleAxisLength.prototype.getLevelIIAxis = function() {
+	return this.HoleAxisLengthData[this.index].d.II;
+}
+
+HoleAxisLength.prototype.getLength = function() {
+	return this.HoleAxisLengthData[this.index].L;
+}

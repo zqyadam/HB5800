@@ -1,0 +1,165 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../../css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="../../css/imageViewer.css"/>
+		<link rel="stylesheet" type="text/css" href="../../css/mui.picker.min.css"/>
+		<link rel="stylesheet" type="text/css" href="../../css/mui.poppicker.css"/>
+		<style type="text/css">
+			.mui-btn {
+				font-size: 16px;
+				padding: 8px;
+				margin: 3px;
+			}
+			h5.mui-content-padded {
+				margin-left: 3px;
+				margin-top: 20px !important;
+			}
+			h5.mui-content-padded:first-child {
+				margin-top: 12px !important;
+			}
+			.ui-alert {
+				/*text-align: center;*/
+				padding: 20px 10px;
+				font-size: 16px;
+			}
+			
+			
+			.mui-popover {
+				height: 300px;
+			}
+			.mui-content {
+				padding: 10px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+		    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+		    <h1 class="mui-title">转接半径r和到校L<sub>3</sub>及其角度45°</h1>
+		</header>
+		<div class="mui-content">
+		    <img src="../../imgs/CornorChamAndAngle.gif" width="100%" data-preview-src=""/>
+		    <p style="padding:0 10px;">注：转接半径系指图样中未标注定位尺寸并作为表面间连接过渡用的半径。</p>
+		    <div style="padding:20px 10px;" class="mui-content-padded">
+		        <a id="btnActiveCornorChamPicker" class="mui-btn mui-btn-block" href="#CornorChamPicker" style="width:85%;margin:0 auto">选择转接半径r或倒角L<sub>3</sub></a>
+				<div id='CornorChamResult' class="ui-alert"></div>
+		    </div>
+		</div>
+		<!--弹出列表-->
+		<div id="CornorChamPicker" class="mui-popover">
+			<div class="mui-popover-arrow"></div>
+			<div class="mui-scroll-wrapper">
+				<div class="mui-scroll">
+					<ul class="mui-table-view" id="PopList"></ul>
+				</div>
+			</div>
+
+		</div>
+		<!--下面为脚本-->
+		<script src="../../js/mui.min.js"></script>
+		<script src="../../js/mui.zoom.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../js/mui.previewimage.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../js/mui.picker.js"></script>
+		<script src="../../js/mui.poppicker.js"></script>
+		<script type="text/javascript">
+			mui.init();
+			mui('.mui-scroll-wrapper').scroll();
+			mui.plusReady(function(){
+			    mui.previewImage();
+			    var CornorChamData = [{
+						text: '0.1',
+						value: '0.07'
+					}, {
+						text: '>0.1~<0.3',
+						value: '0.1'
+					}, {
+						text: '0.3~0.5',
+						value: '0.2'
+					}, {
+						text: '>0.5~1',
+						value: '0.3'
+					}, {
+						text: '>1~3',
+						value: '0.5'
+					}, {
+						text: '>3~6',
+						value: '1.0'
+					}, {
+						text: '>6~30',
+						value: '2.0'
+					}, {
+						text: '>30~120',
+						value: '3.0'
+					}];
+				CornorChamData.forEach(function(item){
+					var li = document.createElement('li');
+					li.className = 'mui-table-view-cell';
+					var aTag = document.createElement('a');
+					aTag.setAttribute('data-value',item.value);
+					aTag.innerText = item.text;
+					li.appendChild(aTag)
+				    var PopList = document.getElementById('PopList');
+				    PopList.appendChild(li);
+				})
+				mui('#PopList').on('tap','li',function(event){
+//					console.log(this.children[0].getAttribute('data-value'));
+					var text = this.children[0].innerText;
+					var value = this.children[0].getAttribute('data-value');
+					var resultHTML = "<p>转接半径r或倒角L<sub>3</sub>(mm)："+ text+"</p>";
+					resultHTML += "<p>r或L<sub>3</sub>极限偏差(mm)：±"+ value +"</p>";
+					resultHTML += "<p>45°角的极限偏差：±45°</p>";
+					CornorChamResult.innerHTML = resultHTML;
+					mui('#CornorChamPicker').popover('toggle');
+				})
+//				(function($,doc){
+//						$.ready(function(){
+//						    var CornorChamPicker = new $.PopPicker();
+//							CornorChamPicker.setData([{
+//								text: '0.1',
+//								value: '0.07'
+//							}, {
+//								text: '>0.1~<0.3',
+//								value: '0.1'
+//							}, {
+//								text: '0.3~0.5',
+//								value: '0.2'
+//							}, {
+//								text: '>0.5~1',
+//								value: '0.3'
+//							}, {
+//								text: '>1~3',
+//								value: '0.5'
+//							}, {
+//								text: '>3~6',
+//								value: '1.0'
+//							}, {
+//								text: '>6~30',
+//								value: '2.0'
+//							}, {
+//								text: '>30~120',
+//								value: '3.0'
+//							}]);
+//							var CornorChamButton = doc.getElementById('CornorChamPicker');
+//							var CornorChamResult = doc.getElementById('CornorChamResult');
+//							CornorChamButton.addEventListener('tap', function(event) {
+//								CornorChamPicker.show(function(items) {
+//									var resultHTML = "<p>转接半径r或倒角L<sub>3</sub>(mm)："+ items[0].text+"</p>";
+//									resultHTML += "<p>r或L<sub>3</sub>极限偏差(mm)：±"+ items[0]['value']+"</p>";
+//									resultHTML += "<p>45°角的极限偏差：±45°</p>";
+//									CornorChamResult.innerHTML = resultHTML;
+//								});
+//							}, false);
+//						})
+//					})(mui, document);
+				
+			});
+		</script>
+	</body>
+
+</html>

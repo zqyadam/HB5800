@@ -6,6 +6,28 @@
 		<title></title>
 		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
 		<link href="../../css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="../../css/imageViewer.css"/>
+		<link rel="stylesheet" type="text/css" href="../../css/mui.picker.min.css"/>
+		<link rel="stylesheet" type="text/css" href="../../css/mui.poppicker.css"/>
+		<style type="text/css">
+			.mui-btn {
+				font-size: 16px;
+				padding: 8px;
+				margin: 3px;
+			}
+			h5.mui-content-padded {
+				margin-left: 3px;
+				margin-top: 20px !important;
+			}
+			h5.mui-content-padded:first-child {
+				margin-top: 12px !important;
+			}
+			.ui-alert {
+				/*text-align: center;*/
+				padding: 20px 10px;
+				font-size: 16px;
+			}
+		</style>
 	</head>
 
 	<body>
@@ -16,28 +38,118 @@
 		<div class="mui-content">
 		    <img src="../../imgs/HoleAndScrewDepth.gif" width="100%" data-preview-src=""/>
 		    <ul class="mui-table-view mui-unfold">
+		    	<!--钻孔深度面板-->
 		    	<li class="mui-table-view-cell mui-collapse mui-active" id="ToleranceTypePanel">
-		            <a class="mui-navigate-right" href="#">选择公差类型（孔、轴、长度）</a>
+		            <a>钻孔深度L<sub>1</sub></a>
 		            <div class="mui-collapse-content" >
-		                <ul class="mui-table-view mui-table-view-radio">
-	                        <li class="mui-table-view-cell mui-selected">
-	                        	<a class="mui-navigate-right">孔D</a>
-	                        </li>
-	                        <li class="mui-table-view-cell">
-	                        	<a class="mui-navigate-right">轴d</a>
-	                        </li>
-	                        <li class="mui-table-view-cell">
-	                        	<a class="mui-navigate-right">长度L</a>
-	                        </li>
-	                    </ul>
+		                <button id='HoleLengthPicker' class="mui-btn mui-btn-block" type='button'>选择钻孔深度L<sub>1</sub></button>
+						<div id='HoleLengthTolResult' class="ui-alert"></div>
+		            </div>
+		        </li>
+		        <!--螺纹深度面板-->
+		        <li class="mui-table-view-cell mui-collapse mui-active" id="ToleranceTypePanel">
+		            <a>螺纹深度L<sub>2</sub></a>
+		            <div class="mui-collapse-content" >
+		                <button id='ScrewLengthPicker' class="mui-btn mui-btn-block" type='button'>选择螺距</button>
+						<div id='ScrewLengthTolResult' class="ui-alert"></div>
 		            </div>
 		        </li>
 		    </ul>
 		</div>
 		
 		<script src="../../js/mui.min.js"></script>
+		<script src="../../js/Common.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../js/mui.zoom.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../js/mui.previewimage.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../js/mui.picker.js"></script>
+		<script src="../../js/mui.poppicker.js"></script>
 		<script type="text/javascript">
-			mui.init()
+			mui.init();
+			mui.plusReady(function(){
+			    mui.previewImage();
+				//钻孔深度处理过程
+				(function($,doc){
+					$.ready(function(){
+					var HoleLengthPicker = new $.PopPicker();
+					HoleLengthPicker.setData([{
+						text: '0.1~0.3',
+						value: {
+							upper:"+0.10",
+							lower:"-0.05"
+						}
+					}, {
+						text: '>0.3~<1',
+						value: {
+							upper:"+0.20",
+							lower:"-0.10"
+						}
+					}, {
+						text: '1~10',
+						value: {
+							upper:"+0.50",
+							lower:"-0.25"
+						}
+					}, {
+						text: '>10~315',
+						value: {
+							upper:"+1.0",
+							lower:"-0.5"
+						}
+					},]);
+					var HoleLengthPickerButton = doc.getElementById('HoleLengthPicker');
+					var HoleLengthTolResult = doc.getElementById('HoleLengthTolResult');
+					HoleLengthPickerButton.addEventListener('tap', function(event) {
+						HoleLengthPicker.show(function(items) {
+							var resultHTML = "<h4>钻孔深度："+ items[0].text+"</h4>";
+							resultHTML += "<h4>极限上偏差："+ items[0]['value']['upper']+"</h4>";
+							resultHTML += "<h4>极限下偏差："+ items[0]['value']['lower']+"</h4>";
+							HoleLengthTolResult.innerHTML = resultHTML;
+						});
+					}, false);
+					})
+				})(mui,document);
+				// 螺纹深度处理过程
+				(function($,doc){
+					$.ready(function(){
+					var ScrewLengthPicker = new $.PopPicker();
+					ScrewLengthPicker.setData([{
+						text: '≤0.6',
+						value: {
+							upper:"+0.5",
+							lower:"-0.5"
+						}
+					}, {
+						text: '0.7~1.25',
+						value: {
+							upper:"+1.0",
+							lower:"-0.5"
+						}
+					}, {
+						text: '1.5~2.5',
+						value: {
+							upper:"+1.5",
+							lower:"-1.0"
+						}
+					}, {
+						text: '3~4',
+						value: {
+							upper:"+2.0",
+							lower:"-1.0"
+						}
+					},]);
+					var ScrewLengthPickerButton = doc.getElementById('ScrewLengthPicker');
+					var ScrewLengthTolResult = doc.getElementById('ScrewLengthTolResult');
+					ScrewLengthPickerButton.addEventListener('tap', function(event) {
+						ScrewLengthPicker.show(function(items) {
+							var resultHTML = "<h4>螺纹深度："+ items[0].text+"</h4>";
+							resultHTML += "<h4>极限上偏差："+ items[0]['value']['upper']+"</h4>";
+							resultHTML += "<h4>极限下偏差："+ items[0]['value']['lower']+"</h4>";
+							ScrewLengthTolResult.innerHTML = resultHTML;
+						});
+					}, false);
+					})
+				})(mui,document);
+			})
 		</script>
 	</body>
 

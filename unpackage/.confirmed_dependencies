@@ -36,7 +36,8 @@
 		],
 		"refer": [
 			"Pages/linear/HoleAxisLength.html",
-			"Pages/linear/HoleAndScrewDepth.html"
+			"Pages/linear/HoleAndScrewDepth.html",
+			"Pages/linear/CornorChamAndAngle.html"
 		]
 	},
 	"Pages/linear/HoleAxisLength.html": {
@@ -58,7 +59,31 @@
 			"js/mui.min.js",
 			"fonts/mui.ttf",
 			"css/mui.min.css",
-			"imgs/HoleAndScrewDepth.gif"
+			"imgs/HoleAndScrewDepth.gif",
+			"css/imageViewer.css",
+			"js/mui.zoom.js",
+			"js/mui.previewimage.js",
+			"js/Common.js",
+			"js/mui.picker.min.js",
+			"js/mui.poppicker.js",
+			"css/mui.poppicker.css",
+			"css/mui.picker.min.css",
+			"js/mui.picker.js"
+		]
+	},
+	"Pages/linear/CornorChamAndAngle.html": {
+		"resources": [
+			"js/mui.picker.js",
+			"js/mui.zoom.js",
+			"imgs/CornorChamAndAngle.gif",
+			"css/imageViewer.css",
+			"js/mui.poppicker.js",
+			"js/mui.previewimage.js",
+			"js/mui.min.js",
+			"fonts/mui.ttf",
+			"css/mui.min.css",
+			"css/mui.poppicker.css",
+			"css/mui.picker.min.css"
 		]
 	}
 }

@@ -215,7 +215,10 @@
 				"resources": [
 					"js/mui.min.js",
 					"css/mui.min.css",
-					"fonts/mui.ttf"
+					"fonts/mui.ttf",
+					"css/iconfont.css",
+					"fonts/iconfont.ttf",
+					"css/mui.css"
 				],
 				"refer": [
 					"Pages/linear.html",
@@ -291,8 +294,7 @@
 		},
 		"idle": {
 			"resources": [
-				"js/mui.js",
-				"css/mui.css"
+				"js/mui.js"
 			]
 		}
 	}

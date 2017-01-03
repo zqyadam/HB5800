@@ -27,10 +27,9 @@
 				padding: 20px 10px;
 				font-size: 16px;
 			}
-			
-			
+
 			.mui-popover {
-				height: 300px;
+				height: 360px;
 			}
 			.mui-content {
 				padding: 10px;
@@ -59,7 +58,6 @@
 					<ul class="mui-table-view" id="PopList"></ul>
 				</div>
 			</div>
-
 		</div>
 		<!--下面为脚本-->
 		<script src="../../js/mui.min.js"></script>
@@ -113,7 +111,7 @@
 					var value = this.children[0].getAttribute('data-value');
 					var resultHTML = "<p>转接半径r或倒角L<sub>3</sub>(mm)："+ text+"</p>";
 					resultHTML += "<p>r或L<sub>3</sub>极限偏差(mm)：±"+ value +"</p>";
-					resultHTML += "<p>45°角的极限偏差：±45°</p>";
+					resultHTML += "<p>45°角的极限偏差：±5°</p>";
 					CornorChamResult.innerHTML = resultHTML;
 					mui('#CornorChamPicker').popover('toggle');
 				})

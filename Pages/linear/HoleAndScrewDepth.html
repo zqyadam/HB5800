@@ -100,9 +100,9 @@
 					var HoleLengthTolResult = doc.getElementById('HoleLengthTolResult');
 					HoleLengthPickerButton.addEventListener('tap', function(event) {
 						HoleLengthPicker.show(function(items) {
-							var resultHTML = "<h4>钻孔深度："+ items[0].text+"</h4>";
-							resultHTML += "<h4>极限上偏差："+ items[0]['value']['upper']+"</h4>";
-							resultHTML += "<h4>极限下偏差："+ items[0]['value']['lower']+"</h4>";
+							var resultHTML = "<h4>钻孔深度L<sub>1</sub>："+ items[0].text+"</h4>";
+							resultHTML += "<h4>深度极限上偏差："+ items[0]['value']['upper']+"</h4>";
+							resultHTML += "<h4>深度极限下偏差："+ items[0]['value']['lower']+"</h4>";
 							HoleLengthTolResult.innerHTML = resultHTML;
 						});
 					}, false);
@@ -141,9 +141,9 @@
 					var ScrewLengthTolResult = doc.getElementById('ScrewLengthTolResult');
 					ScrewLengthPickerButton.addEventListener('tap', function(event) {
 						ScrewLengthPicker.show(function(items) {
-							var resultHTML = "<h4>螺纹深度："+ items[0].text+"</h4>";
-							resultHTML += "<h4>极限上偏差："+ items[0]['value']['upper']+"</h4>";
-							resultHTML += "<h4>极限下偏差："+ items[0]['value']['lower']+"</h4>";
+							var resultHTML = "<h4>螺&nbsp;&nbsp;&nbsp;&nbsp;距："+ items[0].text+"</h4>";
+							resultHTML += "<h4>螺纹长度L<sub>2</sub>极限上偏差："+ items[0]['value']['upper']+"</h4>";
+							resultHTML += "<h4>螺纹长度L<sub>2</sub>极限下偏差："+ items[0]['value']['lower']+"</h4>";
 							ScrewLengthTolResult.innerHTML = resultHTML;
 						});
 					}, false);

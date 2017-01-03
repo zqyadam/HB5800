@@ -1,0 +1,156 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../../css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="../../css/imageViewer.css"/>
+		<link rel="stylesheet" type="text/css" href="../../css/mui.picker.min.css"/>
+		<link rel="stylesheet" type="text/css" href="../../css/mui.poppicker.css"/>
+		<style type="text/css">
+			.mui-btn {
+				font-size: 16px;
+				padding: 8px;
+				margin: 3px;
+			}
+			h5.mui-content-padded {
+				margin-left: 3px;
+				margin-top: 20px !important;
+			}
+			h5.mui-content-padded:first-child {
+				margin-top: 12px !important;
+			}
+			.ui-alert {
+				/*text-align: center;*/
+				padding: 20px 10px;
+				font-size: 16px;
+			}
+			
+			.mui-popover {
+				height: 360px;
+			}
+			.mui-content {
+				padding: 10px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+		    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+		    <h1 class="mui-title">非转接半径R</h1>
+		</header>
+		<div class="mui-content">
+		    <img src="../../imgs/RadiusTolerance1.gif" width="100%" data-preview-src=""/>
+		    <center><img src="../../imgs/RadiusTolerance2.gif" width="90%"  data-preview-src=""/></center>
+		    <p style="padding:0 10px;">注：1.非转接半径系指图样上直接标注定位尺寸并作为特定结构用的半径。</p>
+		    <p style="padding:0 10px;">
+		    	2.当宽度A为双向偏差时，相切半径R（下图）的极限偏差按公差值之半冠以正负号，连接处应圆滑过渡。</p>
+		    <div style="padding:20px 10px;" class="mui-content-padded">
+		        <a id="btnActiveCornorChamPicker" class="mui-btn mui-btn-block" href="#RadiusRPicker" style="width:85%;margin:0 auto">选择非转接半径R</a>
+				<div id='RadiusRResult' class="ui-alert"></div>
+		    </div>
+		</div>
+		<!--弹出列表-->
+		<div id="RadiusRPicker" class="mui-popover">
+			<div class="mui-popover-arrow"></div>
+			<div class="mui-scroll-wrapper">
+				<div class="mui-scroll">
+					<ul class="mui-table-view" id="PopList"></ul>
+				</div>
+			</div>
+		</div>
+		<script src="../../js/mui.min.js"></script>
+		<script src="../../js/mui.zoom.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../js/mui.previewimage.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../js/mui.picker.js"></script>
+		<script src="../../js/mui.poppicker.js"></script>
+		<script type="text/javascript">
+			mui.init();
+			mui.plusReady(function(){
+			    mui.previewImage();
+			    mui('.mui-scroll-wrapper').scroll();
+			    var RadiusRData = [{
+						text: '≤6',
+						value: {
+							concaveR:[0.3,0],
+							onvexR:[0,-0.3]
+						}
+					}, {
+						text: '>6~18',
+						value: {
+							concaveR:[0.4,0],
+							onvexR:[0,-0.4]
+						}
+					}, {
+						text: '>18~50',
+						value: {
+							concaveR:[0.6,0],
+							onvexR:[0,-0.6]
+						}
+					}, {
+						text: '>50~120',
+						value: {
+							concaveR:[0.8,0],
+							onvexR:[0,-0.8]
+						}
+					}, {
+						text: '>120~250',
+						value: {
+							concaveR:[1.2,0],
+							onvexR:[0,-1.2]
+						}
+					}, {
+						text: '>250~500',
+						value: {
+							concaveR:[1.6,0],
+							onvexR:[0,-1.6]
+						}
+					}, {
+						text: '>500~800',
+						value: {
+							concaveR:[2,0],
+							onvexR:[0,-2]
+						}
+					}, {
+						text: '>800',
+						value: {
+							concaveR:[2.6,0],
+							onvexR:[0,-2.6]
+						}
+					}];
+					
+				RadiusRData.forEach(function(item){
+					var li = document.createElement('li');
+					li.className = 'mui-table-view-cell';
+					var aTag = document.createElement('a');
+					aTag.setAttribute('data-value',JSON.stringify(item.value));
+					aTag.innerText = item.text;
+					li.appendChild(aTag)
+				    var PopList = document.getElementById('PopList');
+				    PopList.appendChild(li);
+				});
+				mui('#PopList').on('tap','li',function(event){
+//					console.log(this.children[0].getAttribute('data-value'));
+					var text = this.children[0].innerText;
+					var value = this.children[0].getAttribute('data-value');
+					if (value != "") {
+						value = JSON.parse(value);
+					}
+					var resultHTML = "<p>非转接半径R(mm)："+ text+"</p>";
+					resultHTML += "<h4>凹R极限偏差(mm)：</h4>";
+					resultHTML += "<p>上偏差：" + value.concaveR[0] + "</p>"
+					resultHTML += "<p>下偏差：" + value.concaveR[1] + "</p>"
+					resultHTML += "<h4>凸R极限偏差(mm)：</h4>";
+					resultHTML += "<p>上偏差：" + value.onvexR[0] + "</p>"
+					resultHTML += "<p>下偏差：" + value.onvexR[1] + "</p>"
+					RadiusRResult.innerHTML = resultHTML;
+					mui('#RadiusRPicker').popover('toggle');
+				})
+			})
+		</script>
+	</body>
+
+</html>

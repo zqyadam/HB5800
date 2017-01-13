@@ -1,92 +1,128 @@
 {
-	"index.html": {
-		"resources": [
-			"js/mui.min.js",
-			"fonts/mui.ttf",
-			"css/mui.min.css",
-			"content.html"
-		],
-		"refer": [
-			"content.html"
-		]
-	},
-	"Pages/linear.html": {
-		"resources": [
-			"fonts/mui.ttf",
-			"js/mui.min.js",
-			"css/mui.min.css"
-		]
-	},
-	"content.html": {
-		"resources": [
-			"js/mui.min.js",
-			"css/mui.min.css",
-			"fonts/mui.ttf",
-			"css/iconfont.css",
-			"fonts/iconfont.ttf",
-			"css/mui.css"
-		],
-		"refer": [
-			"Pages/linear.html",
-			"Pages/linear/linearContent.html"
-		]
-	},
-	"Pages/linear/linearContent.html": {
-		"resources": [
-			"js/mui.min.js",
-			"fonts/mui.ttf",
-			"css/mui.min.css"
-		],
-		"refer": [
-			"Pages/linear/HoleAxisLength.html",
-			"Pages/linear/HoleAndScrewDepth.html",
-			"Pages/linear/CornorChamAndAngle.html"
-		]
-	},
-	"Pages/linear/HoleAxisLength.html": {
-		"resources": [
-			"js/mui.min.js",
-			"css/mui.min.css",
-			"fonts/mui.ttf",
-			"imgs/HoleAxisLength.png",
-			"css/imageViewer.css",
-			"js/mui.zoom.js",
-			"js/mui.previewimage.js",
-			"imgs/HoleAxisLength.gif",
-			"data/HoleAxisLengthData.js",
-			"js/Common.js"
-		]
-	},
-	"Pages/linear/HoleAndScrewDepth.html": {
-		"resources": [
-			"js/mui.min.js",
-			"fonts/mui.ttf",
-			"css/mui.min.css",
-			"imgs/HoleAndScrewDepth.gif",
-			"css/imageViewer.css",
-			"js/mui.zoom.js",
-			"js/mui.previewimage.js",
-			"js/Common.js",
-			"js/mui.picker.min.js",
-			"js/mui.poppicker.js",
-			"css/mui.poppicker.css",
-			"css/mui.picker.min.css",
-			"js/mui.picker.js"
-		]
-	},
-	"Pages/linear/CornorChamAndAngle.html": {
-		"resources": [
-			"js/mui.picker.js",
-			"js/mui.zoom.js",
-			"imgs/CornorChamAndAngle.gif",
-			"css/imageViewer.css",
-			"js/mui.poppicker.js",
-			"js/mui.previewimage.js",
-			"js/mui.min.js",
-			"fonts/mui.ttf",
-			"css/mui.min.css",
-			"css/mui.poppicker.css",
-			"css/mui.picker.min.css"
-		]
-	}
+  "index.html": {
+    "resources": [
+      "js/mui.min.js",
+      "fonts/mui.ttf",
+      "css/mui.min.css",
+      "content.html"
+    ],
+    "refer": [
+      "content.html"
+    ]
+  },
+  "Pages/linear.html": {
+    "resources": [
+      "fonts/mui.ttf",
+      "js/mui.min.js",
+      "css/mui.min.css"
+    ],
+    "refer": []
+  },
+  "content.html": {
+    "resources": [
+      "js/mui.min.js",
+      "css/mui.min.css",
+      "fonts/mui.ttf",
+      "css/iconfont.css",
+      "fonts/iconfont.ttf",
+      "css/mui.css",
+      "js/h.min.js"
+    ],
+    "refer": [
+      "Pages/linear.html",
+      "Pages/linear/linearContent.html"
+    ]
+  },
+  "Pages/linear/linearContent.html": {
+    "resources": [
+      "js/mui.min.js",
+      "fonts/mui.ttf",
+      "css/mui.min.css"
+    ],
+    "refer": [
+      "Pages/linear/HoleAxisLength.html",
+      "Pages/linear/HoleAndScrewDepth.html",
+      "Pages/linear/CornorChamAndAngle.html",
+      "Pages/linear/RadiusR.html",
+      "Pages/linear/Edges.html"
+    ]
+  },
+  "Pages/linear/HoleAxisLength.html": {
+    "resources": [
+      "js/mui.min.js",
+      "css/mui.min.css",
+      "fonts/mui.ttf",
+      "imgs/HoleAxisLength.png",
+      "css/imageViewer.css",
+      "js/mui.zoom.js",
+      "js/mui.previewimage.js",
+      "imgs/HoleAxisLength.gif",
+      "data/HoleAxisLengthData.js",
+      "js/Common.js"
+    ],
+    "refer": []
+  },
+  "Pages/linear/HoleAndScrewDepth.html": {
+    "resources": [
+      "js/mui.min.js",
+      "fonts/mui.ttf",
+      "css/mui.min.css",
+      "imgs/HoleAndScrewDepth.gif",
+      "css/imageViewer.css",
+      "js/mui.zoom.js",
+      "js/mui.previewimage.js",
+      "js/Common.js",
+      "js/mui.picker.min.js",
+      "js/mui.poppicker.js",
+      "css/mui.poppicker.css",
+      "css/mui.picker.min.css",
+      "js/mui.picker.js"
+    ],
+    "refer": []
+  },
+  "Pages/linear/CornorChamAndAngle.html": {
+    "resources": [
+      "js/mui.picker.js",
+      "js/mui.zoom.js",
+      "imgs/CornorChamAndAngle.gif",
+      "css/imageViewer.css",
+      "js/mui.poppicker.js",
+      "js/mui.previewimage.js",
+      "js/mui.min.js",
+      "fonts/mui.ttf",
+      "css/mui.min.css",
+      "css/mui.poppicker.css",
+      "css/mui.picker.min.css"
+    ],
+    "refer": []
+  },
+  "Pages/linear/RadiusR.html": {
+    "resources": [
+      "js/mui.picker.js",
+      "js/mui.zoom.js",
+      "js/mui.min.js",
+      "css/imageViewer.css",
+      "js/mui.poppicker.js",
+      "fonts/mui.ttf",
+      "css/mui.min.css",
+      "js/mui.previewimage.js",
+      "css/mui.poppicker.css",
+      "css/mui.picker.min.css",
+      "imgs/RadiusTolerance1.gif",
+      "imgs/RadiusTolerance2.gif"
+    ],
+    "refer": []
+  },
+  "Pages/linear/Edges.html": {
+    "resources": [
+      "js/mui.zoom.js",
+      "js/mui.min.js",
+      "css/imageViewer.css",
+      "fonts/mui.ttf",
+      "css/mui.min.css",
+      "js/mui.previewimage.js",
+      "imgs/Edge.gif"
+    ],
+    "refer": []
+  }
 }

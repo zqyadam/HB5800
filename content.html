@@ -11,6 +11,10 @@
 			/*h4{
 				font-family:"黑体";
 			}*/
+			/* 修饰九宫格底部线条 */
+			.mui-table-view-cell.mui-collapse .mui-table-view .mui-table-view-cell:after{
+				background-color:transparent;
+			}
 		</style>
 	</head>
 
@@ -22,63 +26,71 @@
 						<h4>概述</h4>
 					</a>
 				</li>
-		        <li class="mui-table-view-cell mui-collapse" style="padding-left: 0px; padding-right: 0px;"><a style="margin-left: 15px;margin-right: 15px;"><h4>切削尺寸公差</h4></a>
-		        	<div style="margin:0px">
-		                <ul class="mui-table-view mui-grid-view mui-grid-9" style="margin-left: 0px;margin-right: 0px;">
-							<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-4" >
-								<a id="LinerTol">
-									<span class="mui-icon iconfont icon-zhixian"></span>
-									<div class="mui-media-body">线性尺寸</div>
-								</a>
-							</li>
-							<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-4">
-								<a id="AngleTol">
-									<span class="mui-icon iconfont icon-icon-protractor"></span> 
-									<div class="mui-media-body">角度尺寸</div>
-								</a>
-							</li>
-							<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-4">
-								<a id="ShapePosition"> 
-									<span class="mui-icon iconfont icon-xingzhuang"></span>
-									<div class="mui-media-body">形状位置</div>
-								</a>
-							</li>
-						</ul>
-					</div>
+		        <li class="mui-table-view-cell mui-active mui-collapse">
+		        	<a class="mui-navigate-right">
+		        		<h4>切削加工件</h4>
+		        	</a>
+		        	<div style="margin-right:-30px;">
+		        	<ul class="mui-table-view mui-grid-view mui-grid-9 mui-table-view-chevron">
+						<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-4 none">
+							<a id="LinerTol" >
+								<span class="mui-icon iconfont icon-zhixian"></span>
+								<div class="mui-media-body">线性尺寸</div>
+							</a>
+						</li>
+						<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-4">
+							<a id="AngleTol">
+								<span class="mui-icon iconfont icon-icon-protractor"></span> 
+								<div class="mui-media-body">角度尺寸</div>
+							</a>
+						</li>
+						<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-4" style="width:33.33333%">
+							<a id="ShapePosition"> 
+								<span class="mui-icon iconfont icon-xingzhuang"></span>
+								<div class="mui-media-body">形状位置</div>
+							</a>
+						</li>
+					</ul>
+				</div>
 		        </li>
 		        <li class="mui-table-view-cell">
 		            <a class="mui-navigate-right">
-		                 Item 2
+					冷冲压件
 		            </a>
 		        </li>
 		        <li class="mui-table-view-cell">
 		            <a class="mui-navigate-right">
-		                 Item 3
+				 	管子弯曲件
+		            </a>
+		        </li>
+		        <li class="mui-table-view-cell">
+		            <a class="mui-navigate-right">
+				 	焊接件
+		            </a>
+		        </li>
+		        <li class="mui-table-view-cell">
+		            <a class="mui-navigate-right">
+				 	塑压件
 		            </a>
 		        </li>
 		    </ul>
-					
-
-			<div class="mui-card">
-				<!--页眉，放置标题-->
-				<div class="mui-card-header">冷冲压件</div>
-				<!--内容区-->
-				<div class="mui-card-content">
-				</div>
-			</div>
 		</div>
 		
 		<script src="js/mui.min.js"></script>
+		<script src="js/h.min.js" type="text/javascript" charset="utf-8"></script>
 		<script type="text/javascript">
 			mui.init();
 			mui.plusReady(function(){
-				document.getElementById('LinerTol').addEventListener('tap',function(e){
+				h('#LinerTol').tap(function(e){
 					mui.openWindow({
 						url: 'Pages/linear/linearContent.html',
 						id : 'liner.html',
 						
 					})
 				})
+//				document.getElementById('LinerTol').addEventListener('tap',function(e){
+//					
+//				})
 			})
 		</script>
 	</body>

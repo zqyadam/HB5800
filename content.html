@@ -55,26 +55,26 @@
 				</li>
 		        <li class="mui-table-view-cell mui-active mui-collapse" id="cuttingWorkpiece">
 		        	<a class="mui-navigate-right">
-		        		<h4>切削加工件</h4>
+		        		<h4>5 切削加工件</h4>
 		        	</a>
 		        	<div style="margin-right:-30px;">
 		        	<ul class="mui-table-view mui-grid-view mui-grid-9 mui-table-view-chevron">
 						<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-4 none">
 							<a id="LinerTol" >
 								<span class="mui-icon iconfont icon-zhixian"></span>
-								<div class="mui-media-body">线性尺寸</div>
+								<div class="mui-media-body"><p>5.1线性尺寸</p></div>
 							</a>
 						</li>
 						<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-4">
 							<a id="AngleTol">
 								<span class="mui-icon iconfont icon-icon-protractor"></span> 
-								<div class="mui-media-body">角度尺寸</div>
+								<div class="mui-media-body"><p>5.2角度尺寸</p></div>
 							</a>
 						</li>
 						<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-4" style="width:33.33333%">
 							<a id="ShapePosition"> 
 								<span class="mui-icon iconfont icon-xingzhuang"></span>
-								<div class="mui-media-body">形状位置</div>
+								<div class="mui-media-body"><p>5.3形状位置</p></div>
 							</a>
 						</li>
 					</ul>
@@ -108,13 +108,7 @@
 		<script type="text/javascript">
 			mui.init();
 			mui.plusReady(function(){
-				h('#LinerTol').tap(function(e){
-					mui.openWindow({
-						url: 'Pages/linear/linearContent.html',
-						id : 'liner.html',
-						
-					})
-				});
+				// 前言页
 				h('#btnPreface').tap(function(e){
 					mui.openWindow({
 						url: 'Pages/Preface/Preface.html',
@@ -145,6 +139,30 @@
 						id : 'GeneralPrinciples.html',
 					})
 				})
+				// 线性公差
+				h('#LinerTol').tap(function(e){
+					mui.openWindow({
+						url: 'Pages/Linear/linearContent.html',
+						id : 'liner.html',
+						
+					})
+				});
+				// 角度公差
+				h('#AngleTol').tap(function(e){
+					mui.openWindow({
+						url: 'Pages/Angle/Angle.html',
+						id : 'Angle.html',
+						
+					})
+				});
+				// 形位公差
+				h('#ShapePosition').tap(function(e){
+					mui.openWindow({
+						url: 'Pages/ShapePosition/ShapePosition.html',
+						id : 'ShapePosition.html',
+						
+					})
+				});
 			})
 		</script>
 	</body>

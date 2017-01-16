@@ -158,7 +158,9 @@
 					"Pages/Preface/Range.html",
 					"Pages/Preface/RefStandard.html",
 					"Pages/Preface/Definition.html",
-					"Pages/Preface/GeneralPrinciples.html"
+					"Pages/Preface/GeneralPrinciples.html",
+					"Pages/Linear/linearContent.html",
+					"Pages/Angle/Angle.html"
 				],
 				"priority": 0
 			},
@@ -301,6 +303,38 @@
 					"css/mui.min.css",
 					"js/mui.min.js",
 					"fonts/mui.ttf"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"Pages/Linear/HoleAxisLength.html": {
+				"resources": [
+					"js/mui.zoom.js",
+					"css/imageViewer.css",
+					"css/mui.min.css",
+					"js/mui.previewimage.js",
+					"data/HoleAxisLengthData.js",
+					"imgs/HoleAxisLength.gif",
+					"js/Common.js"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"Pages/Linear/linearContent.html": {
+				"resources": [
+					"js/mui.min.js",
+					"fonts/mui.ttf",
+					"css/mui.min.css"
+				],
+				"refer": [
+					"Pages/Linear/HoleAxisLength.html"
+				],
+				"priority": 0
+			},
+			"Pages/Angle/Angle.html": {
+				"resources": [
+					"imgs/Angle.gif",
+					"css/mui.min.css"
 				],
 				"refer": [],
 				"priority": 0

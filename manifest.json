@@ -160,7 +160,8 @@
 					"Pages/Preface/Definition.html",
 					"Pages/Preface/GeneralPrinciples.html",
 					"Pages/Linear/linearContent.html",
-					"Pages/Angle/Angle.html"
+					"Pages/Angle/Angle.html",
+					"Pages/ShapePosition/ShapePosition.html"
 				],
 				"priority": 0
 			},
@@ -315,7 +316,9 @@
 					"js/mui.previewimage.js",
 					"data/HoleAxisLengthData.js",
 					"imgs/HoleAxisLength.gif",
-					"js/Common.js"
+					"js/Common.js",
+					"fonts/mui.ttf",
+					"js/mui.min.js"
 				],
 				"refer": [],
 				"priority": 0
@@ -327,17 +330,101 @@
 					"css/mui.min.css"
 				],
 				"refer": [
-					"Pages/Linear/HoleAxisLength.html"
+					"Pages/Linear/HoleAxisLength.html",
+					"Pages/Linear/HoleAndScrewDepth.html",
+					"Pages/Linear/RadiusR.html",
+					"Pages/Linear/CornorChamAndAngle.html",
+					"Pages/Linear/Edges.html"
 				],
 				"priority": 0
 			},
 			"Pages/Angle/Angle.html": {
 				"resources": [
 					"imgs/Angle.gif",
-					"css/mui.min.css"
+					"css/mui.min.css",
+					"fonts/mui.ttf",
+					"js/mui.min.js",
+					"js/mui.zoom.js",
+					"css/imageViewer.css",
+					"js/mui.previewimage.js"
 				],
 				"refer": [],
 				"priority": 0
+			},
+			"Pages/ShapePosition/ShapePosition.html": {
+				"href": "Pages/ShapePosition/ShapePosition.html",
+				"resources": [
+					"css/mui.min.css",
+					"fonts/mui.ttf",
+					"js/mui.min.js"
+				],
+				"priority": 2
+			},
+			"Pages/Linear/HoleAndScrewDepth.html": {
+				"href": "Pages/Linear/HoleAndScrewDepth.html",
+				"resources": [
+					"css/mui.min.css",
+					"fonts/mui.ttf",
+					"css/imageViewer.css",
+					"css/mui.picker.min.css",
+					"css/mui.poppicker.css",
+					"js/mui.min.js",
+					"js/Common.js",
+					"js/mui.zoom.js",
+					"js/mui.previewimage.js",
+					"js/mui.picker.js",
+					"js/mui.poppicker.js",
+					"imgs/HoleAndScrewDepth.gif"
+				],
+				"priority": 6
+			},
+			"Pages/Linear/RadiusR.html": {
+				"href": "Pages/Linear/RadiusR.html",
+				"resources": [
+					"css/mui.min.css",
+					"fonts/mui.ttf",
+					"css/imageViewer.css",
+					"css/mui.picker.min.css",
+					"css/mui.poppicker.css",
+					"js/mui.min.js",
+					"js/mui.zoom.js",
+					"js/mui.previewimage.js",
+					"js/mui.picker.js",
+					"js/mui.poppicker.js",
+					"imgs/RadiusTolerance1.gif",
+					"imgs/RadiusTolerance2.gif"
+				],
+				"priority": 7
+			},
+			"Pages/Linear/CornorChamAndAngle.html": {
+				"href": "Pages/Linear/CornorChamAndAngle.html",
+				"resources": [
+					"css/mui.min.css",
+					"fonts/mui.ttf",
+					"css/imageViewer.css",
+					"css/mui.picker.min.css",
+					"css/mui.poppicker.css",
+					"js/mui.min.js",
+					"js/mui.zoom.js",
+					"js/mui.previewimage.js",
+					"js/mui.picker.js",
+					"js/mui.poppicker.js",
+					"imgs/CornorChamAndAngle.gif"
+				],
+				"priority": 8
+			},
+			"Pages/Linear/Edges.html": {
+				"href": "Pages/Linear/Edges.html",
+				"resources": [
+					"css/mui.min.css",
+					"fonts/mui.ttf",
+					"css/imageViewer.css",
+					"js/mui.min.js",
+					"js/mui.zoom.js",
+					"js/mui.previewimage.js",
+					"imgs/Edge.gif"
+				],
+				"priority": 9
 			}
 		},
 		"idle": {
